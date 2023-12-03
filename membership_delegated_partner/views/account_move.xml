@@ -8,7 +8,7 @@
                 <field name="delegated_member_id" invisible="1" />
                 <field
                     name="delegated_member_id"
-                    attrs="{'invisible':[('move_type', 'not in', ('out_invoice', 'out_refund'))]}"
+                    invisible="move_type not in ('out_invoice', 'out_refund')"
                     groups="membership_delegated_partner.group_delegated_member"
                 />
             </field>

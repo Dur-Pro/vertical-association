@@ -9,25 +9,23 @@
         <field name="priority" eval="999" />
         <field name="arch" type="xml">
             <field name="membership_start" position="attributes">
-                <attribute name="attrs">
-                {'invisible':['|',('membership_start','=',False),('is_adhered_member', '=', True)]}
-            </attribute>
+                <attribute name="invisible">membership_start == False or is_adhered_member == True</attribute>
             </field>
             <field name="membership_start" position="after">
                 <field
                     name="membership_start_adhered"
-                    attrs="{'invisible':[('is_adhered_member','=',False)]}"
+                    invisible="is_adhered_member == False"
                 />
                 <field
                     name="membership_last_start"
-                    attrs="{'invisible':[('membership_last_start','=',False)]}"
+                    invisible="membership_last_start == False"
                 />
             </field>
             <field name="free_member" position="after">
                 <field name="membership_category_ids" widget="many2many_tags" />
                 <field
                     name="is_adhered_member"
-                    attrs="{'invisible': [('associate_member', '=', False)]}"
+                    invisible="associate_member == False"
                 />
             </field>
             <field name="member_lines" position="attributes">
@@ -61,7 +59,7 @@
                         <group>
                             <field
                                 name="membership_id"
-                                attrs="{'readonly': [('account_invoice_id', '!=', False)]}"
+                                readonly="account_invoice_id != False"
                                 domain="[('membership', '=', True), ('type', '=', 'service')]"
                                 context="{
                     'default_membership': True,
@@ -70,7 +68,7 @@
                             />
                             <field
                                 name="member_price"
-                                attrs="{'readonly': [('account_invoice_id', '!=', False)]}"
+                                readonly="account_invoice_id != False"
                             />
                             <field
                                 name="account_invoice_id"
