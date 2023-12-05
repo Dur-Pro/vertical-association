@@ -21,6 +21,22 @@ class MembershipLine(models.Model):
             if inv_line:
                 membership.partner = inv_line._get_partner_for_membership()
 
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     """Delegate the member line to the designated partner for batch create"""
+    #     new_vals_list = []
+    #     for vals in vals_list:
+    #         # Only proceed if 'account_invoice_line' is present in the vals.
+    #         if "account_invoice_line" in vals:
+    #             line = self.env["account.move.line"].browse(vals["account_invoice_line"])
+    #             # If the invoice line has a delegated member, set it as the partner.
+    #             if line.move_id.delegated_member_id:
+    #                 vals["partner"] = line.move_id.delegated_member_id.id
+    #         # Add the potentially modified vals to the new_vals_list.
+    #         new_vals_list.append(vals)
+    #     # Call super with the new list of vals dictionaries.
+    #     return super(ResPartner, self).create(new_vals_list)
+
     @api.model_create_multi
     def create(self, vals_list):
         """Delegate the member line to the designated partner for batch create"""
@@ -35,7 +51,7 @@ class MembershipLine(models.Model):
             # Add the potentially modified vals to the new_vals_list.
             new_vals_list.append(vals)
         # Call super with the new list of vals dictionaries.
-        return super(ResPartner, self).create(new_vals_list)
+        return super(MembershipLine, self).create(new_vals_list)
 
     def write(self, vals):
         """If a partner is delegated, avoid reassign"""
