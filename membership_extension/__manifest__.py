@@ -15,6 +15,11 @@
     "application": False,
     "installable": True,
     "depends": ["membership"],
+    "description": """
+Membership extension
+====================
+This module improves user experience of membership addon.
+    """,
     "data": [
         "security/membership_security.xml",
         "security/ir.model.access.csv",

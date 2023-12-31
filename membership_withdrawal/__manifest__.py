@@ -8,6 +8,11 @@
     "category": "Association",
     "website": "https://github.com/OCA/vertical-association",
     "author": "Tecnativa, Onestein, Odoo Community Association (OCA)",
+    'description': """
+Membership withdrawal
+=====================
+This module allows to log membership withdrawal reason and date of request.
+    """,
     "license": "AGPL-3",
     "application": False,
     "installable": True,

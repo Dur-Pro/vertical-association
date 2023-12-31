@@ -12,6 +12,11 @@
     "license": "AGPL-3",
     "summary": "Delegate membership on a specific partner",
     "depends": ["membership"],
+    "description": """
+Membership Delegate Partner
+===========================
+This module allows to delegate membership on a specific partner.
+    """,
     "data": ["security/membership_security.xml", "views/account_move.xml"],
     "installable": True,
 }

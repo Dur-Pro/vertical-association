@@ -9,6 +9,11 @@
     "category": "Association",
     "author": "Tecnativa, Onestein, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/vertical-association",
+    "description": """
+Variable period for memberships
+===============================
+This module allows to define variable periods for memberships.
+    """,
     "depends": ["membership_extension"],
     "data": ["views/product_template_views.xml"],
     "installable": True,
